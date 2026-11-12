@@ -165,7 +165,7 @@ self.setState({ view: -1, menuOpen: false, searchOpen: false });
 jump(id, wasHome);
 };
 };
-var th = function (u) { return u.replace(/\/foto/, '/t/foto'); };
+var th = function (u) { return u; };
 var byKey = {};
 data.forEach(function (c) { c.products.forEach(function (p) { if (p.img) byKey[p.img] = p; }); });
 var favs = (st.favs || []).filter(function (k) { return byKey[k]; });
