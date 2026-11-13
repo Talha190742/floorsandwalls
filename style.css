@@ -10,7 +10,7 @@ html{scroll-behavior:smooth}
 .show-m{display:none}
 @media (max-width:860px){.hide-m{display:none !important}.show-m{display:flex !important}}
 @media (min-width:861px){.mob-panel{display:none !important}}
- 
+
 .c{display:contents}
 [hidden]{display:none !important}
 button,a{-webkit-tap-highlight-color:transparent}
@@ -78,24 +78,24 @@ select.inp{appearance:none;-webkit-appearance:none;cursor:pointer;font-weight:60
 .inp::placeholder{color:#6A738A}
 .inp:hover{border-color:#B5BDCC}
 .inp:focus{outline:none;border-color:#13244A;background-color:#FFFFFF;box-shadow:0 0 0 4px rgba(31,63,143,0.15)}
- 
+
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .gal figure{margin:0;position:relative}
 .gal img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;background:#F2F4F8}
 .gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(19,36,74,.82);color:#fff;font:600 13px Inter,sans-serif;padding:7px 12px;border-radius:999px}
 @media (max-width:900px){.gal{grid-template-columns:repeat(2,1fr);gap:12px}}
- 
+
 .grp{display:flex;flex-direction:column;gap:2px}
 .grp-t{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.01em}
 .grp-s{font-size:14px;color:#4A5468}
 .grp+*{margin-top:0}
- 
-.hero-photo{background:linear-gradient(100deg,rgba(19,36,74,.86) 0%,rgba(19,36,74,.72) 48%,rgba(19,36,74,.42) 100%),url(fotos/mushfoto.webp) center 38%/cover no-repeat #13244A}
+
+.hero-photo{position:relative;isolation:isolate;overflow:hidden;background:#13244A}.hero-photo::before{content:;position:absolute;inset:-12px;z-index:-2;background:url(fotos/mushfoto.webp) center 55%/cover no-repeat,url(fotos/mushfoto.webp.jpeg) center 55%/cover no-repeat;filter:blur(3px) saturate(.85);opacity:.55}.hero-photo::after{content:;position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(19,36,74,.94) 0%,rgba(19,36,74,.82) 45%,rgba(31,63,143,.55) 100%)}.hero-photo>div{position:relative;z-index:1}
 .hero-photo h1{color:#fff !important}
 .hero-photo p{color:#D2D9E8 !important}
 .hero-photo a[href="#collectie"]{background:#F5B83D !important;color:#13244A !important}
 .hero-photo a[data-click="navOfferte"]{background:transparent !important;color:#fff !important;border-color:rgba(255,255,255,.7) !important}
- 
+
 .brand-logo{flex:none;width:56px;height:56px;border-radius:50%;overflow:hidden;position:relative;background:#fff}
 .brand-logo img{position:absolute;width:68px;height:auto;left:-6px;top:-15px;max-width:none}
 @media (max-width:480px){.brand{gap:8px !important}.brand-logo{width:44px;height:44px}.brand-logo img{width:54px;left:-5px;top:-12px}.brand>span:last-child{font-size:14px !important;padding:9px 14px !important}}
