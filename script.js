@@ -1,17 +1,19 @@
+ 
 (function () {
 var vals = {};
-var ROUTES = { '-1': '', '0': 'click-laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'marmerlook-panelen', '4': 'akoestische-panelen', '10': 'over-floors-walls', '11': 'offerte-aanvragen' };
+var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen' };
 var settingHash = false;
 var PRELOAD = ["laminaat/foto18.webp", "laminaat/foto19.webp", "laminaat/foto20.webp", "laminaat/foto21.webp", "laminaat/foto22.webp", "laminaat/foto23.webp", "laminaat/foto24.webp", "laminaat/foto25.webp", "laminaat/foto26.webp", "laminaat/foto27.webp", "visgraat%20klik%20PVC/foto43.webp", "visgraat%20klik%20PVC/foto44.webp", "visgraat%20klik%20PVC/foto45.webp", "visgraat%20klik%20PVC/foto46.webp", "visgraat%20klik%20PVC/foto47.webp", "visgraat%20klik%20PVC/foto48.webp", "visgraat%20plak%20PVC/foto49.webp", "visgraat%20plak%20PVC/foto50.webp", "visgraat%20plak%20PVC/foto51.webp", "visgraat%20plak%20PVC/foto52.webp", "PVC%20wandpanelen/foto28.webp", "PVC%20wandpanelen/foto29.webp", "PVC%20wandpanelen/foto30.webp", "PVC%20wandpanelen/foto31.webp", "PVC%20wandpanelen/foto32.webp", "PVC%20wandpanelen/foto33.webp", "PVC%20wandpanelen/foto34.webp", "PVC%20wandpanelen/foto35.webp", "PVC%20wandpanelen/foto36.webp", "PVC%20wandpanelen/foto37.webp", "PVC%20wandpanelen/foto38.webp", "PVC%20wandpanelen/foto39.webp", "PVC%20wandpanelen/foto40.webp", "PVC%20wandpanelen/foto41.webp", "PVC%20wandpanelen/foto42.webp", "akoestische%20wandpanelen/foto.webp", "akoestische%20wandpanelen/foto1.webp", "akoestische%20wandpanelen/foto2.webp", "akoestische%20wandpanelen/foto3.webp", "akoestische%20wandpanelen/foto4.webp", "akoestische%20wandpanelen/foto5.webp", "akoestische%20wandpanelen/foto6.webp", "akoestische%20wandpanelen/foto7.webp", "akoestische%20wandpanelen/foto8.webp", "akoestische%20wandpanelen/foto9.webp", "akoestische%20wandpanelen/foto10.webp", "akoestische%20wandpanelen/foto11.webp", "akoestische%20wandpanelen/foto12.webp", "akoestische%20wandpanelen/foto13.webp", "akoestische%20wandpanelen/foto14.webp", "akoestische%20wandpanelen/foto15.webp", "akoestische%20wandpanelen/foto16.webp", "akoestische%20wandpanelen/foto17.webp"];
 var TITLES = {
 '-1': 'Floors & Walls | Laminaat, PVC vloeren en wandpanelen in Amersfoort',
-'0': 'Click laminaat kopen in Amersfoort | Floors & Walls',
+'0': 'Laminaat kopen in Amersfoort | Floors & Walls',
 '1': 'Click PVC visgraat vloeren | Floors & Walls Amersfoort',
 '2': 'Plak PVC visgraat vloeren | Floors & Walls Amersfoort',
-'3': 'Marmerlook wandpanelen | Floors & Walls Amersfoort',
+'3': 'PVC marmerlook wandpanelen | Floors & Walls Amersfoort',
 '4': 'Akoestische wandpanelen | Floors & Walls Amersfoort',
 '10': 'Over Floors & Walls | Showroom, adres en openingstijden',
-'11': 'Offerte aanvragen | Floors & Walls'
+'11': 'Offerte aanvragen | Floors & Walls',
+'12': 'Contact | Floors & Walls Amersfoort'
 };
  
 function initMapView(card) {
@@ -133,15 +135,22 @@ var eight = function (cat) { return [1, 2, 3, 4, 5, 6, 7, 8].map(function (n) { 
 var tegel = real('Tegel laminaat zwart', 12.99, 0);
 var visgraat = real('Visgraat laminaat houtlook', 11.99, 0);
 var kunstgras = real('Kunstgras Rotterdam', 8.99, -1);
-var clickLam = real('Click Laminaat', 7.95, 0);
+var clickLam = real('Laminaat', 7.95, 0);
 var data = [
-{ name: 'Click laminaat', group: 'Vloeren', products: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27].map(function (n, i) { return { name: 'Laminaat ' + (i + 1), price: 7.95, cat: 0, img: 'laminaat/foto' + n + '.webp' }; }) },
+{ name: 'Laminaat', group: 'Vloeren', products: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27].map(function (n, i) { return { name: 'Laminaat ' + (i + 1), price: 7.95, cat: 0, img: 'laminaat/foto' + n + '.webp' }; }) },
 { name: 'Click PVC visgraat', group: 'Vloeren', products: [43, 44, 45, 46, 47, 48].map(function (n, i) { return { name: 'Click PVC visgraat ' + (i + 1), price: 18.95, cat: 1, img: 'visgraat%20klik%20PVC/foto' + n + '.webp' }; }) },
 { name: 'Plak PVC visgraat', group: 'Vloeren', products: [49, 50, 51, 52].map(function (n, i) { return { name: 'Plak PVC visgraat ' + (i + 1), price: 23.95, cat: 2, img: 'visgraat%20plak%20PVC/foto' + n + '.webp' }; }) },
-{ name: 'Marmerlook panelen', group: 'Wandpanelen', products: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42].map(function (n, i) { return { name: 'Marmerlook paneel ' + (i + 1), price: 35, cat: 3, img: 'PVC%20wandpanelen/foto' + n + '.webp' }; }) },
+{ name: 'PVC marmerlook panelen', group: 'Wandpanelen', products: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42].map(function (n, i) { return { name: 'PVC marmerlook paneel ' + (i + 1), price: 35, cat: 3, img: 'PVC%20wandpanelen/foto' + n + '.webp' }; }) },
 { name: 'Akoestische panelen', group: 'Wandpanelen', products: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(function (n, i) { return { name: 'Akoestisch paneel ' + (i + 1), price: 35, cat: 4, img: 'akoestische%20wandpanelen/foto' + (n === 0 ? '' : n) + '.webp' }; }) }
 ];
 var sel = (view < 0 || view > 4) ? 0 : view;
+var INTRO = [
+'Laminaat met kliksysteem: zonder lijm te leggen en prima zelf te doen. Een slijtvaste, betaalbare vloer met een natuurlijke houtlook. Kom de dessins bekijken in onze showroom.',
+'Visgraatvloeren in PVC met een kliksysteem: geen lijm nodig en snel gelegd. PVC is waterbestendig en makkelijk schoon te houden. Zo krijg je de uitstraling van een klassieke visgraatvloer.',
+'Visgraat PVC die op de ondergrond wordt verlijmd. Dat geeft een stevige vloer zonder kliknaden. De ondergrond moet wel vlak en schoon zijn, vraag ons gerust om advies.',
+'PVC wandpanelen met een marmerlook, voor een luxe uitstraling zonder echt steen. Ze zijn waterbestendig en makkelijk schoon te maken, ook handig in de keuken of badkamer. Bekijk de uitvoeringen in onze showroom.',
+'Wandpanelen met houtlook latten op een geluiddempende laag. Ze dempen galm en geven een ruimte direct sfeer. Beschikbaar in meerdere kleuren, van licht eiken tot zwart, kom ze bekijken in de showroom.'
+];
  
 var jump = function (id, smooth) {
 setTimeout(function () {
@@ -189,7 +198,7 @@ var form = {};
 for (var k in self.state.form) form[k] = self.state.form[k];
 var msg = quoteMsg(keys);
 form['of-bericht'] = msg;
-self.setState({ view: 11, menuOpen: false, searchOpen: false, lb: -1, form: form, quote: keys, autoMsg: msg, soort: byKey[keys[0]].cat });
+self.setState({ view: 11, menuOpen: false, searchOpen: false, lb: -1, form: form, quote: keys, autoMsg: msg, soort: -1, soortOpen: false });
 var box = document.getElementById('of-bericht');
 if (box) box.value = msg;
 jump('top', false);
@@ -274,7 +283,7 @@ var area = cl * cb;
 var need = area > 0 ? Math.ceil(area * (st.calc.extra ? 1.1 : 1)) : 0;
 var nl = function (n) { return (Math.round(n * 10) / 10).toString().replace('.', ','); };
  
-var shortNames = ['Laminaat', 'Click PVC', 'Plak PVC', 'Marmerlook', 'Akoestisch'];
+var shortNames = ['Laminaat', 'Click PVC', 'Plak PVC', 'PVC marmerlook', 'Akoestisch'];
 var cats = data.map(function (c, i) { return { name: c.name, short: shortNames[i], thumb: th(c.products[0].img), group: c.group, current: view === i, other: view !== i, go: go(i) }; });
 var groupTabs = ['Vloeren', 'Wandpanelen'].map(function (g) {
 var first = 0;
@@ -297,11 +306,15 @@ pick: function () { self.setState({ soort: i, soortOpen: false }); }
 var f = st.form;
 var val = function (k) { return (f[k] || '').trim(); };
 var adres = (val('of-straat') + ' ' + val('of-huisnr') + ' ' + val('of-toev')).trim() + ', ' + val('of-postcode') + ' ' + val('of-plaats');
-var offerteText = ['Offerteaanvraag via de website', '', 'Product: ' + (st.soort < 0 ? '' : data[st.soort].name), 'Aantal m2: ' + val('of-m2'), '', 'Naam: ' + val('of-naam'), 'Telefoon: ' + val('of-tel'), 'E-mail: ' + val('of-mail'), 'Adres: ' + adres, '', 'Bericht: ' + val('of-bericht')].join('\n');
+var quoteCats = [];
+quote.forEach(function (k) { var c = byKey[k].cat; if (quoteCats.indexOf(c) < 0) quoteCats.push(c); });
+var productLine = quote.length ? quoteCats.map(function (c) { return data[c].name; }).join(' + ') : (st.soort < 0 ? '' : data[st.soort].name);
+var offerteText = ['Offerteaanvraag via de website', '', 'Product: ' + productLine, 'Aantal m2: ' + val('of-m2'), '', 'Naam: ' + (val('of-voornaam') + ' ' + val('of-achternaam')).trim(), 'Telefoon: ' + val('of-tel'), 'E-mail: ' + val('of-mail'), 'Adres: ' + adres, '', 'Bericht: ' + val('of-bericht')].join('\n');
 var errors = {};
-var order = ['soort', 'of-naam', 'of-tel', 'of-mail', 'of-m2', 'of-straat', 'of-huisnr', 'of-postcode', 'of-plaats', 'of-bericht'];
-if (st.soort < 0) errors['soort'] = 'Kies een product.';
-if (!val('of-naam')) errors['of-naam'] = 'Vul je naam in.';
+var order = ['of-voornaam', 'of-achternaam', 'of-tel', 'of-mail', 'of-straat', 'of-huisnr', 'of-postcode', 'of-plaats', 'soort', 'of-m2'];
+if (!quote.length && st.soort < 0) errors['soort'] = 'Kies een product.';
+if (!val('of-voornaam')) errors['of-voornaam'] = 'Vul je voornaam in.';
+if (!val('of-achternaam')) errors['of-achternaam'] = 'Vul je achternaam in.';
 var digits = val('of-tel').replace(/\D/g, '');
 if (digits.length < 10 || digits.length > 13) errors['of-tel'] = 'Vul een geldig telefoonnummer in.';
 if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('of-mail'))) errors['of-mail'] = 'Vul een geldig e-mailadres in.';
@@ -310,9 +323,27 @@ if (!val('of-straat')) errors['of-straat'] = 'Vul je straat in.';
 if (!/^\d+/.test(val('of-huisnr'))) errors['of-huisnr'] = 'Vul je huisnummer in.';
 if (!/^\d{4}\s?[A-Za-z]{2}$/.test(val('of-postcode'))) errors['of-postcode'] = 'Vul een geldige postcode in, bijvoorbeeld 1234 AB.';
 if (!val('of-plaats')) errors['of-plaats'] = 'Vul je woonplaats in.';
-if (!val('of-bericht')) errors['of-bericht'] = 'Schrijf een kort bericht.';
 var firstBad = null;
 order.forEach(function (k) { if (firstBad === null && errors[k]) firstBad = k; });
+ 
+var cerrors = {};
+var cOrder = ['cf-voornaam', 'cf-achternaam', 'cf-mail', 'cf-tel', 'cf-vraag'];
+if (!val('cf-voornaam')) cerrors['cf-voornaam'] = 'Vul je voornaam in.';
+if (!val('cf-achternaam')) cerrors['cf-achternaam'] = 'Vul je achternaam in.';
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('cf-mail'))) cerrors['cf-mail'] = 'Vul een geldig e-mailadres in.';
+var cdigits = val('cf-tel').replace(/\D/g, '');
+if (val('cf-tel') && (cdigits.length < 10 || cdigits.length > 13)) cerrors['cf-tel'] = 'Vul een geldig telefoonnummer in of laat het leeg.';
+if (!val('cf-vraag')) cerrors['cf-vraag'] = 'Vul je vraag in.';
+var cFirstBad = null;
+cOrder.forEach(function (k) { if (cFirstBad === null && cerrors[k]) cFirstBad = k; });
+var contactLines = ['Vraag via de website', '', 'Naam: ' + (val('cf-voornaam') + ' ' + val('cf-achternaam')).trim(), 'E-mail: ' + val('cf-mail')];
+if (val('cf-tel')) contactLines.push('Telefoon: ' + val('cf-tel'));
+if (val('cf-onderwerp')) contactLines.push('Onderwerp: ' + val('cf-onderwerp'));
+contactLines.push('', 'Vraag: ' + val('cf-vraag'));
+var contactText = contactLines.join('\n');
+var allErrors = {};
+if (st.tried) for (var ek in errors) allErrors[ek] = errors[ek];
+if (st.cTried) for (var ck in cerrors) allErrors[ck] = cerrors[ck];
  
 var allReal = [clickLam, tegel, visgraat, kunstgras];
 var q = st.query.trim().toLowerCase();
@@ -346,11 +377,16 @@ selWa: favs.length ? WA + '?text=' + enc('Hallo, ik heb interesse in: ' + selNam
 selAsk: function (e) { stop(e); if (favs.length) openQuote(favs.slice()); },
 selClear: function (e) { stop(e); setFavs([]); },
 hasQuote: view === 11 && quote.length > 0,
+noQuote: !(view === 11 && quote.length > 0),
+quoteCatsText: quoteCats.map(function (c) { return data[c].name; }).join(' + '),
 quoteItems: quote.map(function (k) {
 return { name: byKey[k].name, img: th(k), remove: function (e) {
 stop(e);
 var l = quote.filter(function (x) { return x !== k; });
-var next = { quote: l };
+var next = { quote: l, soort: -1 };
+var nf = favs.filter(function (x) { return x !== k; });
+try { localStorage.setItem('fw-favs', JSON.stringify(nf)); } catch (err) {}
+next.favs = nf;
 var cur = (self.state.form['of-bericht'] || '').trim();
 if (!cur || cur === self.state.autoMsg) {
 var msg = quoteMsg(l);
@@ -369,6 +405,7 @@ isHome: view < 0,
 isCat: view >= 0 && view <= 4,
 isOver: view === 10,
 isOfferte: view === 11,
+isContact: view === 12,
 cats: cats,
 groupTabs: groupTabs,
 subCats: subCats,
@@ -376,6 +413,7 @@ soorten: soorten,
 floors: cats.filter(function (c) { return c.group === 'Vloeren'; }),
 walls: cats.filter(function (c) { return c.group === 'Wandpanelen'; }),
 catName: data[sel].name,
+catIntro: INTRO[sel],
 catGroup: data[sel].group,
 catCount: data[sel].products.length + ' producten',
 examples: products.map(show),
@@ -397,6 +435,7 @@ go4: cats[4].go,
 goHome: nav('top'),
 navOver: go(10),
 navOfferte: go(11),
+navContact: go(12),
 askTegel: ask(tegel),
 askVisgraat: ask(visgraat),
 askKunstgras: ask(kunstgras),
@@ -415,7 +454,7 @@ soortName: st.soort < 0 ? 'Kies een product' : data[st.soort].name,
 soortOpen: !!st.soortOpen,
 sent: !!st.sent,
 resetForm: function () {
-['of-naam', 'of-tel', 'of-mail', 'of-m2', 'of-straat', 'of-huisnr', 'of-toev', 'of-postcode', 'of-plaats', 'of-bericht'].forEach(function (id) {
+['of-voornaam', 'of-achternaam', 'of-tel', 'of-mail', 'of-m2', 'of-straat', 'of-huisnr', 'of-toev', 'of-postcode', 'of-plaats', 'of-bericht'].forEach(function (id) {
 var el = document.getElementById(id);
 if (el) el.value = '';
 });
@@ -449,8 +488,34 @@ var box = document.getElementById('of-m2');
 if (box) box.value = String(need);
 jump('top', false);
 },
-errors: st.tried ? errors : {},
+errors: allErrors,
 formInvalid: st.tried && firstBad !== null,
+cSent: !!st.cSent,
+cInvalid: !!st.cTried && cFirstBad !== null,
+contactWa: cFirstBad === null ? WA + '?text=' + enc(contactText) : '',
+contactMail: cFirstBad === null ? MAIL + '?subject=' + enc(val('cf-onderwerp') || 'Vraag via de website') + '&body=' + enc(contactText) : '',
+cSubmit: function (e) {
+if (cFirstBad === null) {
+setTimeout(function () { self.setState({ cSent: true }); }, 400);
+return;
+}
+stop(e);
+self.setState({ cTried: true });
+var el = document.getElementById(cFirstBad);
+if (el) {
+if (el.focus) el.focus();
+if (el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+},
+cReset: function () {
+var next = {};
+for (var k in self.state.form) if (k.indexOf('cf-') !== 0) next[k] = self.state.form[k];
+cOrder.concat(['cf-onderwerp']).forEach(function (id) {
+var el = document.getElementById(id);
+if (el) el.value = '';
+});
+self.setState({ form: next, cTried: false, cSent: false });
+},
 submitCheck: function (e) {
 if (firstBad === null) {
 setTimeout(function () { self.setState({ sent: true }); }, 400);
