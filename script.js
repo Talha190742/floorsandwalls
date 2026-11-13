@@ -167,7 +167,7 @@ var stop = function (e) { if (e && e.preventDefault) e.preventDefault(); };
 var go = function (i) {
 return function (e) {
 stop(e);
-self.setState({ view: i, menuOpen: false, searchOpen: false });
+self.setState({ view: i, menuOpen: false, searchOpen: false, shown: 12 });
 jump('top', false);
 };
 };
@@ -423,7 +423,9 @@ catName: data[sel].name,
 catIntro: INTRO[sel],
 catGroup: data[sel].group,
 catCount: data[sel].products.length + ' producten',
-examples: products.map(show),
+examples: products.slice(0, st.shown || 12).map(show),
+hasMore: products.length > (st.shown || 12),
+moreLeft: String(Math.max(0, products.length - (st.shown || 12))),
 usps: ['Alleen A-merken', 'Laagste prijs', 'Altijd garantie', 'Showroom van 3.000 m²', 'Beste service'],
 hours: [
 { day: 'Maandag', time: 'Gesloten', cls: wd === 1 ? 'hrow closed today' : 'hrow closed', today: wd === 1 },
@@ -552,6 +554,7 @@ noResults: results.length === 0,
 closeMenu: function () { self.setState({ menuOpen: false }); },
 menuOpen: st.menuOpen,
 menuClosed: !st.menuOpen,
+showMore: function () { self.setState({ shown: (self.state.shown || 12) + 12 }); },
 toggleMenu: function () { self.setState({ menuOpen: !self.state.menuOpen, searchOpen: false }); }
 };
 };
