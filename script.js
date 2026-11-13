@@ -758,7 +758,7 @@ var warmStep = function () {
 warmList.splice(0, 6).forEach(function (u) { var im = new Image(); im.src = u; warm.push(im); });
 if (warmList.length) setTimeout(warmStep, 120);
 };
-setTimeout(warmStep, 200);
+warmList.length = Math.min(warmList.length, 0);
 window.addEventListener('hashchange', route);
 render();
 route();
