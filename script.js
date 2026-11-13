@@ -143,8 +143,8 @@ var data = [
 { name: 'Plak PVC visgraat', group: 'Vloeren', products: [49, 50, 51, 52, 82, 83, 84].map(function (n, i) { return { name: 'Plak PVC visgraat ' + (i + 1), price: 23.95, cat: 2, img: 'visgraat%20plak%20PVC/foto' + n + '.webp' }; }) },
 { name: 'PVC marmerlook panelen', group: 'Wandpanelen', products: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42].map(function (n, i) { return { name: 'PVC marmerlook paneel ' + (i + 1), price: 35, cat: 3, img: 'PVC%20wandpanelen/foto' + n + '.webp' }; }) },
 { name: 'Akoestische panelen', group: 'Wandpanelen', products: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(function (n, i) { return { name: 'Akoestisch paneel ' + (i + 1), price: 35, cat: 4, img: 'akoestische%20wandpanelen/foto' + (n === 0 ? '' : n) + '.webp' }; }) },
-{ name: 'Hongaarse punt', group: 'Vloeren', products: [66, 67, 68, 69, 70, 71, 72].map(function (n, i) { return { name: 'Hongaarse punt ' + (i + 1), price: null, priceText: 'Op aanvraag', cat: 5, img: 'hongaarse%20punt/foto' + n + '.webp' }; }) },
-{ name: 'Tegel laminaat', group: 'Vloeren', products: [73, 74, 75, 76, 77, 78, 80].map(function (n, i) { return { name: 'Tegel laminaat ' + (i + 1), price: null, priceText: 'Op aanvraag', cat: 6, img: 'tegel%20laminaat/foto' + n + '.webp' }; }) }
+{ name: 'Hongaarse punt', group: 'Vloeren', products: [66, 67, 68, 69, 70, 71, 72].map(function (n, i) { return { name: 'Hongaarse punt ' + (i + 1), price: 16.95, cat: 5, img: 'hongaarse%20punt/foto' + n + '.webp' }; }) },
+{ name: 'Tegel laminaat', group: 'Vloeren', products: [73, 74, 75, 76, 77, 78, 80].map(function (n, i) { return { name: 'Tegel laminaat ' + (i + 1), price: 7.95, cat: 6, img: 'tegel%20laminaat/foto' + n + '.webp' }; }) }
 ];
 var sel = (view < 0 || view > 6) ? 0 : view;
 var INTRO = [
@@ -167,7 +167,7 @@ var stop = function (e) { if (e && e.preventDefault) e.preventDefault(); };
 var go = function (i) {
 return function (e) {
 stop(e);
-self.setState({ view: i, menuOpen: false, searchOpen: false, shown: 12 });
+self.setState({ view: i, menuOpen: false, searchOpen: false, shown: 8 });
 jump('top', false);
 };
 };
@@ -423,9 +423,9 @@ catName: data[sel].name,
 catIntro: INTRO[sel],
 catGroup: data[sel].group,
 catCount: data[sel].products.length + ' producten',
-examples: products.slice(0, st.shown || 12).map(show),
-hasMore: products.length > (st.shown || 12),
-moreLeft: String(Math.max(0, products.length - (st.shown || 12))),
+examples: products.slice(0, st.shown || 8).map(show),
+hasMore: products.length > (st.shown || 8),
+moreLeft: String(Math.max(0, products.length - (st.shown || 8))),
 usps: ['Alleen A-merken', 'Laagste prijs', 'Altijd garantie', 'Showroom van 3.000 m²', 'Beste service'],
 hours: [
 { day: 'Maandag', time: 'Gesloten', cls: wd === 1 ? 'hrow closed today' : 'hrow closed', today: wd === 1 },
@@ -554,7 +554,7 @@ noResults: results.length === 0,
 closeMenu: function () { self.setState({ menuOpen: false }); },
 menuOpen: st.menuOpen,
 menuClosed: !st.menuOpen,
-showMore: function () { self.setState({ shown: (self.state.shown || 12) + 12 }); },
+showMore: function () { self.setState({ shown: (self.state.shown || 8) + 8 }); },
 toggleMenu: function () { self.setState({ menuOpen: !self.state.menuOpen, searchOpen: false }); }
 };
 };
