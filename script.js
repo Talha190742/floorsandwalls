@@ -1,4 +1,3 @@
- 
 (function () {
 var vals = {};
 var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen' };
@@ -755,4 +754,3 @@ render();
 route();
 setInterval(render, 60000);
 })();
- 
