@@ -120,3 +120,4 @@ body.has-bar{padding-bottom:84px}
 .qchip img{width:36px;height:36px;border-radius:8px;object-fit:cover}
 .qchip button{width:32px;height:32px;border:0;border-radius:8px;background:transparent;font-size:22px;line-height:1;color:#4A5468;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.wa-float{transition:none}}
+#lb[hidden],#selbar[hidden]{display:none !important}
