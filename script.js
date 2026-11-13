@@ -1,8 +1,8 @@
 (function () {
 var vals = {};
-var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen' };
+var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '5': 'hongaarse-punt-vloeren', '6': 'tegel-laminaat', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen' };
 var settingHash = false;
-var PRELOAD = ["laminaat/foto18.webp", "laminaat/foto19.webp", "laminaat/foto20.webp", "laminaat/foto21.webp", "laminaat/foto22.webp", "laminaat/foto23.webp", "laminaat/foto24.webp", "laminaat/foto25.webp", "laminaat/foto26.webp", "laminaat/foto27.webp", "visgraat%20klik%20PVC/foto43.webp", "visgraat%20klik%20PVC/foto44.webp", "visgraat%20klik%20PVC/foto45.webp", "visgraat%20klik%20PVC/foto46.webp", "visgraat%20klik%20PVC/foto47.webp", "visgraat%20klik%20PVC/foto48.webp", "visgraat%20plak%20PVC/foto49.webp", "visgraat%20plak%20PVC/foto50.webp", "visgraat%20plak%20PVC/foto51.webp", "visgraat%20plak%20PVC/foto52.webp", "PVC%20wandpanelen/foto28.webp", "PVC%20wandpanelen/foto29.webp", "PVC%20wandpanelen/foto30.webp", "PVC%20wandpanelen/foto31.webp", "PVC%20wandpanelen/foto32.webp", "PVC%20wandpanelen/foto33.webp", "PVC%20wandpanelen/foto34.webp", "PVC%20wandpanelen/foto35.webp", "PVC%20wandpanelen/foto36.webp", "PVC%20wandpanelen/foto37.webp", "PVC%20wandpanelen/foto38.webp", "PVC%20wandpanelen/foto39.webp", "PVC%20wandpanelen/foto40.webp", "PVC%20wandpanelen/foto41.webp", "PVC%20wandpanelen/foto42.webp", "akoestische%20wandpanelen/foto.webp", "akoestische%20wandpanelen/foto1.webp", "akoestische%20wandpanelen/foto2.webp", "akoestische%20wandpanelen/foto3.webp", "akoestische%20wandpanelen/foto4.webp", "akoestische%20wandpanelen/foto5.webp", "akoestische%20wandpanelen/foto6.webp", "akoestische%20wandpanelen/foto7.webp", "akoestische%20wandpanelen/foto8.webp", "akoestische%20wandpanelen/foto9.webp", "akoestische%20wandpanelen/foto10.webp", "akoestische%20wandpanelen/foto11.webp", "akoestische%20wandpanelen/foto12.webp", "akoestische%20wandpanelen/foto13.webp", "akoestische%20wandpanelen/foto14.webp", "akoestische%20wandpanelen/foto15.webp", "akoestische%20wandpanelen/foto16.webp", "akoestische%20wandpanelen/foto17.webp"];
+var PRELOAD = ["laminaat/foto18.webp", "laminaat/foto19.webp", "laminaat/foto20.webp", "laminaat/foto21.webp", "laminaat/foto22.webp", "laminaat/foto23.webp", "laminaat/foto24.webp", "laminaat/foto25.webp", "laminaat/foto26.webp", "laminaat/foto27.webp", "laminaat/foto53.webp", "laminaat/foto54.webp", "laminaat/foto55.webp", "laminaat/foto56.webp", "laminaat/foto57.webp", "laminaat/foto58.webp", "laminaat/foto59.webp", "laminaat/foto60.webp", "laminaat/foto61.webp", "laminaat/foto62.webp", "laminaat/foto63.webp", "laminaat/foto64.webp", "laminaat/foto65.webp", "hongaarse%20punt/foto66.webp", "hongaarse%20punt/foto67.webp", "hongaarse%20punt/foto68.webp", "hongaarse%20punt/foto69.webp", "hongaarse%20punt/foto70.webp", "hongaarse%20punt/foto71.webp", "hongaarse%20punt/foto72.webp", "tegel%20laminaat/foto73.webp", "tegel%20laminaat/foto74.webp", "tegel%20laminaat/foto75.webp", "tegel%20laminaat/foto76.webp", "tegel%20laminaat/foto77.webp", "tegel%20laminaat/foto78.webp", "tegel%20laminaat/foto80.webp", "visgraat%20klik%20PVC/foto43.webp", "visgraat%20klik%20PVC/foto44.webp", "visgraat%20klik%20PVC/foto45.webp", "visgraat%20klik%20PVC/foto46.webp", "visgraat%20klik%20PVC/foto47.webp", "visgraat%20klik%20PVC/foto48.webp", "visgraat%20plak%20PVC/foto49.webp", "visgraat%20plak%20PVC/foto50.webp", "visgraat%20plak%20PVC/foto51.webp", "visgraat%20plak%20PVC/foto52.webp", "visgraat%20plak%20PVC/foto82.webp", "visgraat%20plak%20PVC/foto83.webp", "visgraat%20plak%20PVC/foto84.webp", "visgraat%20klik%20PVC/foto85.webp", "visgraat%20klik%20PVC/foto86.webp", "visgraat%20klik%20PVC/foto87.webp", "visgraat%20klik%20PVC/foto88.webp", "visgraat%20klik%20PVC/foto89.webp", "visgraat%20klik%20PVC/foto90.webp", "visgraat%20klik%20PVC/foto91.webp", "visgraat%20klik%20PVC/foto92.webp", "PVC%20wandpanelen/foto28.webp", "PVC%20wandpanelen/foto29.webp", "PVC%20wandpanelen/foto30.webp", "PVC%20wandpanelen/foto31.webp", "PVC%20wandpanelen/foto32.webp", "PVC%20wandpanelen/foto33.webp", "PVC%20wandpanelen/foto34.webp", "PVC%20wandpanelen/foto35.webp", "PVC%20wandpanelen/foto36.webp", "PVC%20wandpanelen/foto37.webp", "PVC%20wandpanelen/foto38.webp", "PVC%20wandpanelen/foto39.webp", "PVC%20wandpanelen/foto40.webp", "PVC%20wandpanelen/foto41.webp", "PVC%20wandpanelen/foto42.webp", "akoestische%20wandpanelen/foto.webp", "akoestische%20wandpanelen/foto1.webp", "akoestische%20wandpanelen/foto2.webp", "akoestische%20wandpanelen/foto3.webp", "akoestische%20wandpanelen/foto4.webp", "akoestische%20wandpanelen/foto5.webp", "akoestische%20wandpanelen/foto6.webp", "akoestische%20wandpanelen/foto7.webp", "akoestische%20wandpanelen/foto8.webp", "akoestische%20wandpanelen/foto9.webp", "akoestische%20wandpanelen/foto10.webp", "akoestische%20wandpanelen/foto11.webp", "akoestische%20wandpanelen/foto12.webp", "akoestische%20wandpanelen/foto13.webp", "akoestische%20wandpanelen/foto14.webp", "akoestische%20wandpanelen/foto15.webp", "akoestische%20wandpanelen/foto16.webp", "akoestische%20wandpanelen/foto17.webp"];
 var TITLES = {
 '-1': 'Floors & Walls | Laminaat, PVC vloeren en wandpanelen in Amersfoort',
 '0': 'Laminaat kopen in Amersfoort | Floors & Walls',
@@ -10,11 +10,13 @@ var TITLES = {
 '2': 'Plak PVC visgraat vloeren | Floors & Walls Amersfoort',
 '3': 'PVC marmerlook wandpanelen | Floors & Walls Amersfoort',
 '4': 'Akoestische wandpanelen | Floors & Walls Amersfoort',
+'5': 'Hongaarse punt vloeren | Floors & Walls Amersfoort',
+'6': 'Tegel laminaat | Floors & Walls Amersfoort',
 '10': 'Over Floors & Walls | Showroom, adres en openingstijden',
 '11': 'Offerte aanvragen | Floors & Walls',
 '12': 'Contact | Floors & Walls Amersfoort'
 };
- 
+
 function initMapView(card) {
 var view = card.querySelector('.mapview');
 var img = card.querySelector('.mapimg');
@@ -136,21 +138,25 @@ var visgraat = real('Visgraat laminaat houtlook', 11.99, 0);
 var kunstgras = real('Kunstgras Rotterdam', 8.99, -1);
 var clickLam = real('Laminaat', 7.95, 0);
 var data = [
-{ name: 'Laminaat', group: 'Vloeren', products: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27].map(function (n, i) { return { name: 'Laminaat ' + (i + 1), price: 7.95, cat: 0, img: 'laminaat/foto' + n + '.webp' }; }) },
-{ name: 'Click PVC visgraat', group: 'Vloeren', products: [43, 44, 45, 46, 47, 48].map(function (n, i) { return { name: 'Click PVC visgraat ' + (i + 1), price: 18.95, cat: 1, img: 'visgraat%20klik%20PVC/foto' + n + '.webp' }; }) },
-{ name: 'Plak PVC visgraat', group: 'Vloeren', products: [49, 50, 51, 52].map(function (n, i) { return { name: 'Plak PVC visgraat ' + (i + 1), price: 23.95, cat: 2, img: 'visgraat%20plak%20PVC/foto' + n + '.webp' }; }) },
+{ name: 'Laminaat', group: 'Vloeren', products: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65].map(function (n, i) { return { name: 'Laminaat ' + (i + 1), price: 7.95, cat: 0, img: 'laminaat/foto' + n + '.webp' }; }) },
+{ name: 'Click PVC visgraat', group: 'Vloeren', products: [43, 44, 45, 46, 47, 48, 85, 86, 87, 88, 89, 90, 91, 92].map(function (n, i) { return { name: 'Click PVC visgraat ' + (i + 1), price: 18.95, cat: 1, img: 'visgraat%20klik%20PVC/foto' + n + '.webp' }; }) },
+{ name: 'Plak PVC visgraat', group: 'Vloeren', products: [49, 50, 51, 52, 82, 83, 84].map(function (n, i) { return { name: 'Plak PVC visgraat ' + (i + 1), price: 23.95, cat: 2, img: 'visgraat%20plak%20PVC/foto' + n + '.webp' }; }) },
 { name: 'PVC marmerlook panelen', group: 'Wandpanelen', products: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42].map(function (n, i) { return { name: 'PVC marmerlook paneel ' + (i + 1), price: 35, cat: 3, img: 'PVC%20wandpanelen/foto' + n + '.webp' }; }) },
-{ name: 'Akoestische panelen', group: 'Wandpanelen', products: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(function (n, i) { return { name: 'Akoestisch paneel ' + (i + 1), price: 35, cat: 4, img: 'akoestische%20wandpanelen/foto' + (n === 0 ? '' : n) + '.webp' }; }) }
+{ name: 'Akoestische panelen', group: 'Wandpanelen', products: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(function (n, i) { return { name: 'Akoestisch paneel ' + (i + 1), price: 35, cat: 4, img: 'akoestische%20wandpanelen/foto' + (n === 0 ? '' : n) + '.webp' }; }) },
+{ name: 'Hongaarse punt', group: 'Vloeren', products: [66, 67, 68, 69, 70, 71, 72].map(function (n, i) { return { name: 'Hongaarse punt ' + (i + 1), price: null, priceText: 'Op aanvraag', cat: 5, img: 'hongaarse%20punt/foto' + n + '.webp' }; }) },
+{ name: 'Tegel laminaat', group: 'Vloeren', products: [73, 74, 75, 76, 77, 78, 80].map(function (n, i) { return { name: 'Tegel laminaat ' + (i + 1), price: null, priceText: 'Op aanvraag', cat: 6, img: 'tegel%20laminaat/foto' + n + '.webp' }; }) }
 ];
-var sel = (view < 0 || view > 4) ? 0 : view;
+var sel = (view < 0 || view > 6) ? 0 : view;
 var INTRO = [
 'Laminaat met kliksysteem: zonder lijm te leggen en prima zelf te doen. Een slijtvaste, betaalbare vloer met een natuurlijke houtlook. Kom de dessins bekijken in onze showroom.',
 'Visgraatvloeren in PVC met een kliksysteem: geen lijm nodig en snel gelegd. PVC is waterbestendig en makkelijk schoon te houden. Zo krijg je de uitstraling van een klassieke visgraatvloer.',
 'Visgraat PVC die op de ondergrond wordt verlijmd. Dat geeft een stevige vloer zonder kliknaden. De ondergrond moet wel vlak en schoon zijn, vraag ons gerust om advies.',
 'PVC wandpanelen met een marmerlook, voor een luxe uitstraling zonder echt steen. Ze zijn waterbestendig en makkelijk schoon te maken, ook handig in de keuken of badkamer. Bekijk de uitvoeringen in onze showroom.',
-'Wandpanelen met houtlook latten op een geluiddempende laag. Ze dempen galm en geven een ruimte direct sfeer. Beschikbaar in meerdere kleuren, van licht eiken tot zwart, kom ze bekijken in de showroom.'
+'Wandpanelen met houtlook latten op een geluiddempende laag. Ze dempen galm en geven een ruimte direct sfeer. Beschikbaar in meerdere kleuren, van licht eiken tot zwart, kom ze bekijken in de showroom.',
+'Vloeren in Hongaarse punt: een klassiek patroon waarbij de planken in een scherpe punt op elkaar aansluiten. Dat geeft een ruimte direct karakter en een luxe uitstraling. Kom de dessins bekijken in onze showroom.',
+'Laminaat in een tegellook, met de uitstraling van beton, leisteen of marmer. Zo krijg je de sfeer van een tegelvloer, in lichte of juist donkere tinten. Kom de dessins bekijken in onze showroom.'
 ];
- 
+
 var jump = function (id, smooth) {
 setTimeout(function () {
 var el = document.getElementById(id);
@@ -238,7 +244,7 @@ setTimeout(function () { var c = document.getElementById('lb-close'); if (c && c
 }
 return out;
 };
- 
+
 var products = data[sel].products.slice();
 if (st.sort === 'asc' || st.sort === 'desc') {
 var dir = st.sort === 'asc' ? 1 : -1;
@@ -249,7 +255,7 @@ if (b.price == null) return -1;
 return (a.price - b.price) * dir;
 });
 }
- 
+
 var pad = function (n) { return (n < 10 ? '0' : '') + n; };
 var hm = function (m) { return pad(Math.floor(m / 60)) + ':' + pad(m % 60); };
 var now = new Date();
@@ -281,27 +287,29 @@ var cb = num(st.calc['calc-b']);
 var area = cl * cb;
 var need = area > 0 ? Math.ceil(area * (st.calc.extra ? 1.1 : 1)) : 0;
 var nl = function (n) { return (Math.round(n * 10) / 10).toString().replace('.', ','); };
- 
-var shortNames = ['Laminaat', 'Click PVC', 'Plak PVC', 'PVC marmerlook', 'Akoestisch'];
+
+var shortNames = ['Laminaat', 'Click PVC', 'Plak PVC', 'PVC marmerlook', 'Akoestisch', 'Hongaarse punt', 'Tegel laminaat'];
 var cats = data.map(function (c, i) { return { name: c.name, short: shortNames[i], thumb: th(c.products[0].img), group: c.group, current: view === i, other: view !== i, go: go(i) }; });
 var groupTabs = ['Vloeren', 'Wandpanelen'].map(function (g) {
 var first = 0;
 for (var gi = 0; gi < data.length; gi++) { if (data[gi].group === g) { first = gi; break; } }
-var cur = view >= 0 && view <= 4 && data[sel].group === g;
+var cur = view >= 0 && view <= 6 && data[sel].group === g;
 return { name: g, current: cur, other: !cur, go: go(first) };
 });
-var subCats = cats.filter(function (c) { return c.group === data[sel].group; });
-var soorten = data.map(function (c, i) {
+var soortOrder = [0, 6, 1, 2, 5, 3, 4];
+var subCats = soortOrder.map(function (i) { return cats[i]; }).filter(function (c) { return c.group === data[sel].group; });
+var soorten = soortOrder.map(function (i, pos) {
+var c = data[i];
 return {
 name: c.name,
 group: c.group,
-head: i === 0 || data[i - 1].group !== c.group,
+head: pos === 0 || data[soortOrder[pos - 1]].group !== c.group,
 selected: st.soort === i,
 sel: st.soort === i ? 'true' : 'false',
 pick: function () { self.setState({ soort: i, soortOpen: false }); }
 };
 });
- 
+
 var f = st.form;
 var val = function (k) { return (f[k] || '').trim(); };
 var adres = (val('of-straat') + ' ' + val('of-huisnr') + ' ' + val('of-toev')).trim() + ', ' + val('of-postcode') + ' ' + val('of-plaats');
@@ -324,7 +332,7 @@ if (!/^\d{4}\s?[A-Za-z]{2}$/.test(val('of-postcode'))) errors['of-postcode'] = '
 if (!val('of-plaats')) errors['of-plaats'] = 'Vul je woonplaats in.';
 var firstBad = null;
 order.forEach(function (k) { if (firstBad === null && errors[k]) firstBad = k; });
- 
+
 var cerrors = {};
 var cOrder = ['cf-voornaam', 'cf-achternaam', 'cf-mail', 'cf-tel', 'cf-vraag'];
 if (!val('cf-voornaam')) cerrors['cf-voornaam'] = 'Vul je voornaam in.';
@@ -343,11 +351,11 @@ var contactText = contactLines.join('\n');
 var allErrors = {};
 if (st.tried) for (var ek in errors) allErrors[ek] = errors[ek];
 if (st.cTried) for (var ck in cerrors) allErrors[ck] = cerrors[ck];
- 
+
 var allReal = [clickLam, tegel, visgraat, kunstgras];
 var q = st.query.trim().toLowerCase();
 var results = allReal.filter(function (p) { return !q || p.name.toLowerCase().indexOf(q) >= 0; }).map(show);
- 
+
 var lbKeys = st.lbKeys || [];
 var lbN = lbKeys.length;
 var lbKey = (st.lb >= 0 && st.lb < lbN) ? lbKeys[st.lb] : null;
@@ -401,7 +409,7 @@ self.setState(next);
 } };
 }),
 isHome: view < 0,
-isCat: view >= 0 && view <= 4,
+isCat: view >= 0 && view <= 6,
 isOver: view === 10,
 isOfferte: view === 11,
 isContact: view === 12,
@@ -409,8 +417,8 @@ cats: cats,
 groupTabs: groupTabs,
 subCats: subCats,
 soorten: soorten,
-floors: cats.filter(function (c) { return c.group === 'Vloeren'; }),
-walls: cats.filter(function (c) { return c.group === 'Wandpanelen'; }),
+floors: soortOrder.map(function (i) { return cats[i]; }).filter(function (c) { return c.group === 'Vloeren'; }),
+walls: soortOrder.map(function (i) { return cats[i]; }).filter(function (c) { return c.group === 'Wandpanelen'; }),
 catName: data[sel].name,
 catIntro: INTRO[sel],
 catGroup: data[sel].group,
@@ -431,6 +439,8 @@ go1: cats[1].go,
 go2: cats[2].go,
 go3: cats[3].go,
 go4: cats[4].go,
+go5: cats[5].go,
+go6: cats[6].go,
 goHome: nav('top'),
 navOver: go(10),
 navOfferte: go(11),
@@ -545,9 +555,9 @@ menuClosed: !st.menuOpen,
 toggleMenu: function () { self.setState({ menuOpen: !self.state.menuOpen, searchOpen: false }); }
 };
 };
- 
+
 var app = new App();
- 
+
 function esc(v) {
 return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
@@ -558,7 +568,7 @@ for (var i = 1; i < parts.length && v != null; i++) v = v[parts[i]];
 return v;
 }
 function each(root, sel, fn) { Array.prototype.forEach.call(root.querySelectorAll(sel), fn); }
- 
+
 var lastView = null;
 function render() {
 var keepY = window.pageYOffset || 0;
@@ -654,7 +664,7 @@ document.body.style.minHeight = '';
 if (Math.abs((window.pageYOffset || 0) - keepY) > 1) window.scrollTo(0, keepY);
 }
 }
- 
+
 function route() {
 if (settingHash) return;
 var name = '';
@@ -675,7 +685,7 @@ var top = document.getElementById('top');
 if (top && top.scrollIntoView) top.scrollIntoView({ behavior: 'instant', block: 'start' });
 }
 }
- 
+
 each(document, '[data-click]', function (el) {
 var path = el.getAttribute('data-click');
 el.addEventListener('click', function (e) {
