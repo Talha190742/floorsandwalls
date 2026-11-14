@@ -1,6 +1,6 @@
 (function () {
 var vals = {};
-var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '5': 'hongaarse-punt-vloeren', '6': 'tegel-laminaat', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen' };
+var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '5': 'hongaarse-punt-vloeren', '6': 'tegel-laminaat', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen', '13': 'bedankt', '14': 'privacyverklaring' };
 var settingHash = false;
 var PRELOAD = ["laminaat/foto18.webp", "laminaat/foto19.webp", "laminaat/foto20.webp", "laminaat/foto21.webp", "laminaat/foto22.webp", "laminaat/foto23.webp", "laminaat/foto24.webp", "laminaat/foto25.webp", "laminaat/foto26.webp", "laminaat/foto27.webp", "laminaat/foto53.webp", "laminaat/foto54.webp", "laminaat/foto55.webp", "laminaat/foto56.webp", "laminaat/foto57.webp", "laminaat/foto58.webp", "laminaat/foto59.webp", "laminaat/foto60.webp", "laminaat/foto61.webp", "laminaat/foto62.webp", "laminaat/foto63.webp", "laminaat/foto64.webp", "laminaat/foto65.webp", "hongaarse%20punt/foto66.webp", "hongaarse%20punt/foto67.webp", "hongaarse%20punt/foto68.webp", "hongaarse%20punt/foto69.webp", "hongaarse%20punt/foto70.webp", "hongaarse%20punt/foto71.webp", "hongaarse%20punt/foto72.webp", "tegel%20laminaat/foto73.webp", "tegel%20laminaat/foto74.webp", "tegel%20laminaat/foto75.webp", "tegel%20laminaat/foto76.webp", "tegel%20laminaat/foto77.webp", "tegel%20laminaat/foto78.webp", "tegel%20laminaat/foto80.webp", "visgraat%20klik%20PVC/foto43.webp", "visgraat%20klik%20PVC/foto44.webp", "visgraat%20klik%20PVC/foto45.webp", "visgraat%20klik%20PVC/foto46.webp", "visgraat%20klik%20PVC/foto47.webp", "visgraat%20klik%20PVC/foto48.webp", "visgraat%20plak%20PVC/foto49.webp", "visgraat%20plak%20PVC/foto50.webp", "visgraat%20plak%20PVC/foto51.webp", "visgraat%20plak%20PVC/foto52.webp", "visgraat%20plak%20PVC/foto82.webp", "visgraat%20plak%20PVC/foto83.webp", "visgraat%20plak%20PVC/foto84.webp", "visgraat%20klik%20PVC/foto85.webp", "visgraat%20klik%20PVC/foto86.webp", "visgraat%20klik%20PVC/foto87.webp", "visgraat%20klik%20PVC/foto88.webp", "visgraat%20klik%20PVC/foto89.webp", "visgraat%20klik%20PVC/foto90.webp", "visgraat%20klik%20PVC/foto91.webp", "visgraat%20klik%20PVC/foto92.webp", "PVC%20wandpanelen/foto28.webp", "PVC%20wandpanelen/foto29.webp", "PVC%20wandpanelen/foto30.webp", "PVC%20wandpanelen/foto31.webp", "PVC%20wandpanelen/foto32.webp", "PVC%20wandpanelen/foto33.webp", "PVC%20wandpanelen/foto34.webp", "PVC%20wandpanelen/foto35.webp", "PVC%20wandpanelen/foto36.webp", "PVC%20wandpanelen/foto37.webp", "PVC%20wandpanelen/foto38.webp", "PVC%20wandpanelen/foto39.webp", "PVC%20wandpanelen/foto40.webp", "PVC%20wandpanelen/foto41.webp", "PVC%20wandpanelen/foto42.webp", "akoestische%20wandpanelen/foto.webp", "akoestische%20wandpanelen/foto1.webp", "akoestische%20wandpanelen/foto2.webp", "akoestische%20wandpanelen/foto3.webp", "akoestische%20wandpanelen/foto4.webp", "akoestische%20wandpanelen/foto5.webp", "akoestische%20wandpanelen/foto6.webp", "akoestische%20wandpanelen/foto7.webp", "akoestische%20wandpanelen/foto8.webp", "akoestische%20wandpanelen/foto9.webp", "akoestische%20wandpanelen/foto10.webp", "akoestische%20wandpanelen/foto11.webp", "akoestische%20wandpanelen/foto12.webp", "akoestische%20wandpanelen/foto13.webp", "akoestische%20wandpanelen/foto14.webp", "akoestische%20wandpanelen/foto15.webp", "akoestische%20wandpanelen/foto16.webp", "akoestische%20wandpanelen/foto17.webp"];
 var TITLES = {
@@ -14,7 +14,9 @@ var TITLES = {
 '6': 'Tegel laminaat | Floors & Walls Amersfoort',
 '10': 'Over Floors & Walls | Showroom, adres en openingstijden',
 '11': 'Offerte aanvragen | Floors & Walls',
-'12': 'Contact | Floors & Walls Amersfoort'
+'12': 'Contact | Floors & Walls Amersfoort',
+'13': 'Bedankt | Floors & Walls Amersfoort',
+'14': 'Privacyverklaring | Floors & Walls Amersfoort'
 };
 
 function initMapView(card) {
@@ -413,6 +415,10 @@ isCat: view >= 0 && view <= 6,
 isOver: view === 10,
 isOfferte: view === 11,
 isContact: view === 12,
+isThanks: view === 13,
+isPrivacy: view === 14,
+thanksOfferte: st.thanksKind === 'offerte',
+thanksContact: st.thanksKind !== 'offerte',
 cats: cats,
 groupTabs: groupTabs,
 subCats: subCats,
@@ -447,6 +453,7 @@ goHome: nav('top'),
 navOver: go(10),
 navOfferte: go(11),
 navContact: go(12),
+navPrivacy: go(14),
 askTegel: ask(tegel),
 askVisgraat: ask(visgraat),
 askKunstgras: ask(kunstgras),
@@ -507,7 +514,13 @@ contactWa: cFirstBad === null ? WA + '?text=' + enc(contactText) : '',
 contactMail: cFirstBad === null ? MAIL + '?subject=' + enc(val('cf-onderwerp') || 'Vraag via de website') + '&body=' + enc(contactText) : '',
 cSubmit: function (e) {
 if (cFirstBad === null) {
-setTimeout(function () { self.setState({ cSent: true }); }, 400);
+setTimeout(function () {
+['cf-voornaam', 'cf-achternaam', 'cf-mail', 'cf-tel', 'cf-onderwerp', 'cf-vraag'].forEach(function (id) { var el = document.getElementById(id); if (el) el.value = ''; });
+var nf = {};
+for (var k in self.state.form) if (k.indexOf('cf-') !== 0) nf[k] = self.state.form[k];
+self.setState({ form: nf, cTried: false, cSent: false, view: 13, thanksKind: 'contact', menuOpen: false, searchOpen: false });
+jump('top', false);
+}, 400);
 return;
 }
 stop(e);
@@ -529,7 +542,11 @@ self.setState({ form: next, cTried: false, cSent: false });
 },
 submitCheck: function (e) {
 if (firstBad === null) {
-setTimeout(function () { self.setState({ sent: true }); }, 400);
+setTimeout(function () {
+['of-voornaam', 'of-achternaam', 'of-tel', 'of-mail', 'of-m2', 'of-straat', 'of-huisnr', 'of-toev', 'of-postcode', 'of-plaats', 'of-bericht'].forEach(function (id) { var el = document.getElementById(id); if (el) el.value = ''; });
+self.setState({ form: {}, soort: -1, tried: false, sent: false, soortOpen: false, quote: [], autoMsg: '', view: 13, thanksKind: 'offerte', menuOpen: false, searchOpen: false });
+jump('top', false);
+}, 400);
 return;
 }
 stop(e);
