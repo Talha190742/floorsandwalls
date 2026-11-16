@@ -124,3 +124,13 @@ body.has-bar{padding-bottom:84px}
 
 img[loading=lazy]{background:#E9ECF2}
 .hero-photo::before,.hero-photo::after{display:none !important}
+
+.rv-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 2px 16px;scrollbar-width:none;overscroll-behavior-x:contain}
+.rv-track::-webkit-scrollbar{display:none}
+.rv-card{flex:0 0 min(360px,84%);scroll-snap-align:start;box-sizing:border-box}
+.rv-btn{width:48px;height:48px;border-radius:50%;border:2px solid #13244A;background:#FFFFFF;color:#13244A;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.rv-btn:hover{background:#13244A;color:#FFFFFF}
+@media (max-width:860px){.rv-btn{display:none}}
+.ig-card{flex:0 0 min(280px,72%);scroll-snap-align:start;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#E9ECF2;position:relative;display:block}
+.ig-card img,.ig-card video{width:100%;height:100%;object-fit:cover;display:block}
+.ig-card:hover{opacity:.92}
