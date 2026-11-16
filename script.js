@@ -2,6 +2,9 @@
 var vals = {};
 var ROUTES = { '-1': '', '0': 'laminaat', '1': 'click-pvc-visgraat', '2': 'plak-pvc-visgraat', '3': 'pvc-marmerlook-panelen', '4': 'akoestische-panelen', '5': 'hongaarse-punt-vloeren', '6': 'tegel-laminaat', '10': 'over-floors-walls', '11': 'offerte-aanvragen', '12': 'contact-opnemen', '13': 'bedankt', '14': 'privacyverklaring' };
 var settingHash = false;
+// Instagram-feed: plak hier de feed-URL van Behold (https://feeds.behold.so/JOUW-ID). Leeg = sectie blijft verborgen.
+var INSTA_FEED = '';
+var instaPosts = null;
 var PRELOAD = ["laminaat/foto18.webp", "laminaat/foto19.webp", "laminaat/foto20.webp", "laminaat/foto21.webp", "laminaat/foto22.webp", "laminaat/foto23.webp", "laminaat/foto24.webp", "laminaat/foto25.webp", "laminaat/foto26.webp", "laminaat/foto27.webp", "laminaat/foto53.webp", "laminaat/foto54.webp", "laminaat/foto55.webp", "laminaat/foto56.webp", "laminaat/foto57.webp", "laminaat/foto58.webp", "laminaat/foto59.webp", "laminaat/foto60.webp", "laminaat/foto61.webp", "laminaat/foto62.webp", "laminaat/foto63.webp", "laminaat/foto64.webp", "laminaat/foto65.webp", "hongaarse%20punt/foto66.webp", "hongaarse%20punt/foto67.webp", "hongaarse%20punt/foto68.webp", "hongaarse%20punt/foto69.webp", "hongaarse%20punt/foto70.webp", "hongaarse%20punt/foto71.webp", "hongaarse%20punt/foto72.webp", "tegel%20laminaat/foto73.webp", "tegel%20laminaat/foto74.webp", "tegel%20laminaat/foto75.webp", "tegel%20laminaat/foto76.webp", "tegel%20laminaat/foto77.webp", "tegel%20laminaat/foto78.webp", "tegel%20laminaat/foto80.webp", "visgraat%20klik%20PVC/foto43.webp", "visgraat%20klik%20PVC/foto44.webp", "visgraat%20klik%20PVC/foto45.webp", "visgraat%20klik%20PVC/foto46.webp", "visgraat%20klik%20PVC/foto47.webp", "visgraat%20klik%20PVC/foto48.webp", "visgraat%20plak%20PVC/foto49.webp", "visgraat%20plak%20PVC/foto50.webp", "visgraat%20plak%20PVC/foto51.webp", "visgraat%20plak%20PVC/foto52.webp", "visgraat%20plak%20PVC/foto82.webp", "visgraat%20plak%20PVC/foto83.webp", "visgraat%20plak%20PVC/foto84.webp", "visgraat%20klik%20PVC/foto85.webp", "visgraat%20klik%20PVC/foto86.webp", "visgraat%20klik%20PVC/foto87.webp", "visgraat%20klik%20PVC/foto88.webp", "visgraat%20klik%20PVC/foto89.webp", "visgraat%20klik%20PVC/foto90.webp", "visgraat%20klik%20PVC/foto91.webp", "visgraat%20klik%20PVC/foto92.webp", "PVC%20wandpanelen/foto28.webp", "PVC%20wandpanelen/foto29.webp", "PVC%20wandpanelen/foto30.webp", "PVC%20wandpanelen/foto31.webp", "PVC%20wandpanelen/foto32.webp", "PVC%20wandpanelen/foto33.webp", "PVC%20wandpanelen/foto34.webp", "PVC%20wandpanelen/foto35.webp", "PVC%20wandpanelen/foto36.webp", "PVC%20wandpanelen/foto37.webp", "PVC%20wandpanelen/foto38.webp", "PVC%20wandpanelen/foto39.webp", "PVC%20wandpanelen/foto40.webp", "PVC%20wandpanelen/foto41.webp", "PVC%20wandpanelen/foto42.webp", "akoestische%20wandpanelen/foto.webp", "akoestische%20wandpanelen/foto1.webp", "akoestische%20wandpanelen/foto2.webp", "akoestische%20wandpanelen/foto3.webp", "akoestische%20wandpanelen/foto4.webp", "akoestische%20wandpanelen/foto5.webp", "akoestische%20wandpanelen/foto6.webp", "akoestische%20wandpanelen/foto7.webp", "akoestische%20wandpanelen/foto8.webp", "akoestische%20wandpanelen/foto9.webp", "akoestische%20wandpanelen/foto10.webp", "akoestische%20wandpanelen/foto11.webp", "akoestische%20wandpanelen/foto12.webp", "akoestische%20wandpanelen/foto13.webp", "akoestische%20wandpanelen/foto14.webp", "akoestische%20wandpanelen/foto15.webp", "akoestische%20wandpanelen/foto16.webp", "akoestische%20wandpanelen/foto17.webp"];
 var TITLES = {
 '-1': 'Floors & Walls | Laminaat, PVC vloeren en wandpanelen in Amersfoort',
@@ -454,6 +457,8 @@ navOver: go(10),
 navOfferte: go(11),
 navContact: go(12),
 navPrivacy: go(14),
+rvPrev: function () { var t = document.getElementById('rv-track'); if (t) t.scrollBy({ left: -380, behavior: 'smooth' }); },
+rvNext: function () { var t = document.getElementById('rv-track'); if (t) t.scrollBy({ left: 380, behavior: 'smooth' }); },
 askTegel: ask(tegel),
 askVisgraat: ask(visgraat),
 askKunstgras: ask(kunstgras),
@@ -779,8 +784,40 @@ warmList.splice(0, 6).forEach(function (u) { var im = new Image(); im.src = u; w
 if (warmList.length) setTimeout(warmStep, 120);
 };
 warmList.length = Math.min(warmList.length, 0);
+var fillInsta = function () {
+var box = document.getElementById('insta-track');
+var sec = document.getElementById('insta');
+if (!box || !sec || !instaPosts || !instaPosts.length) return;
+if (box.children.length) { sec.hidden = false; return; }
+instaPosts.slice(0, 12).forEach(function (p) {
+var src = (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+if (!src || !p.permalink) return;
+var a = document.createElement('a');
+a.className = 'ig-card';
+a.href = p.permalink;
+a.target = '_blank';
+a.rel = 'noopener';
+var im = document.createElement('img');
+im.src = src;
+im.loading = 'lazy';
+im.alt = (p.caption || 'Instagram-post van Floors & Walls').slice(0, 120);
+a.appendChild(im);
+box.appendChild(a);
+});
+if (box.children.length) sec.hidden = false;
+};
+var loadInsta = function () {
+if (!INSTA_FEED) return;
+try {
+fetch(INSTA_FEED).then(function (r) { return r.json(); }).then(function (d) {
+instaPosts = (d && d.posts) || (Array.isArray(d) ? d : []);
+fillInsta();
+}).catch(function () {});
+} catch (err) {}
+};
 window.addEventListener('hashchange', route);
 render();
+loadInsta();
 route();
-setInterval(render, 60000);
+setInterval(function () { render(); fillInsta(); }, 60000);
 })();
