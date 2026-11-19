@@ -819,5 +819,24 @@ window.addEventListener('hashchange', route);
 render();
 loadInsta();
 route();
-setInterval(function () { render(); fillInsta(); }, 60000);
+
+// Review-datums lopen automatisch mee met de tijd
+var fillReviewDates = function () {
+  var els = document.querySelectorAll('.rv-date');
+  var now = Date.now();
+  for (var i = 0; i < els.length; i++) {
+    var t = Date.parse(els[i].getAttribute('data-d') + 'T12:00:00');
+    if (isNaN(t)) continue;
+    var d = Math.max(0, Math.floor((now - t) / 86400000));
+    var txt;
+    if (d < 1) txt = 'vandaag';
+    else if (d < 7) txt = d === 1 ? 'een dag' : d + ' dagen';
+    else if (d < 30) { var w = Math.floor(d / 7); txt = w === 1 ? 'een week' : w + ' weken'; }
+    else if (d < 365) { var mo = Math.floor(d / 30.44); txt = mo <= 1 ? 'een maand' : mo + ' maanden'; }
+    else { var y = Math.floor(d / 365.25); txt = y <= 1 ? 'een jaar' : y + ' jaar'; }
+    if (els[i].textContent !== txt) els[i].textContent = txt;
+  }
+};
+fillReviewDates();
+setInterval(function () { render(); fillInsta(); fillReviewDates(); }, 60000);
 })();
